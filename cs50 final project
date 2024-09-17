@@ -1,0 +1,558 @@
+<html>
+ <head>
+  <title>
+   Mindfulness App
+  </title>
+  <style>
+   body {
+            font-family: 'Arial', sans-serif;
+            background-color: #E6E6FA;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .screen {
+            width: 300px;
+            height: 600px;
+            background-color: #FFFFFF;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #666666;
+        }
+        .header .time {
+            font-weight: bold;
+        }
+        .header .icons {
+            display: flex;
+            gap: 5px;
+        }
+        .header .icons i {
+            font-size: 16px;
+        }
+        .content {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .content img {
+            width: 100px;
+            height: 100px;
+        }
+        .content h1 {
+            font-size: 24px;
+            color: #4B0082;
+            margin: 20px 0;
+        }
+        .content p {
+            font-size: 14px;
+            color: #666666;
+        }
+        .button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .button.login {
+            background-color: #4B0082;
+        }
+        .button.signup {
+            background-color: #FFB6C1;
+            color: #4B0082;
+        }
+        .mindfulness-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .mindfulness-options .option {
+            width: 48%;
+            height: 100px;
+            background-color: #FFB6C1;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4B0082;
+            font-weight: bold;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .mindfulness-options .option.calm {
+            background-color: #D8BFD8;
+        }
+        .video-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .video-section .video {
+            width: 80%;
+            height: 150px;
+            background-color: #D8BFD8;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFFFFF;
+            font-size: 50px;
+            cursor: pointer;
+        }
+        .video-section .session-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .video-section .session-info h2 {
+            font-size: 24px;
+            color: #4B0082;
+        }
+        .video-section .session-info p {
+            font-size: 14px;
+            color: #666666;
+        }
+        .video-section .session-progress {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .video-section .session-progress .circle {
+            width: 50px;
+            height: 50px;
+            background-color: #FFB6C1;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #4B0082;
+            font-weight: bold;
+            margin: 0 10px;
+            position: relative;
+        }
+        .video-section .session-progress .circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        .video-section .session-progress .circle span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #FFFFFF;
+        }
+        .video-section .session-progress .arrow {
+            font-size: 24px;
+            color: #4B0082;
+        }
+        .nav-buttons {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .nav-buttons .nav-button {
+            width: 30px;
+            height: 30px;
+            background-color: #4B0082;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFFFFF;
+            font-size: 18px;
+            cursor: pointer;
+        }
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div class="container">
+   <!-- Screen 1 -->
+   <div class="screen" id="screen1">
+    <div class="header">
+     <div class="time">
+      10:30
+     </div>
+     <div class="icons">
+      <i class="fas fa-signal">
+      </i>
+      <i class="fas fa-wifi">
+      </i>
+      <i class="fas fa-battery-full">
+      </i>
+     </div>
+    </div>
+    <div class="content">
+     <img alt="Mindfulness logo" height="100" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-LmQ09WWGIGwOeeA4ArnRw0x5/user-uJPET5fjNenSso8wCETWVNOp/img-EONy1xoSz7jI5tgLAuG5w2Ha.png?st=2024-09-17T12%3A10%3A46Z&amp;se=2024-09-17T14%3A10%3A46Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-16T23%3A09%3A42Z&amp;ske=2024-09-17T23%3A09%3A42Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=Kk7sVGtzqRNr88J/KBPTdb%2BYiFR3%2BJQjOxRe0wTX7oE%3D" width="100"/>
+     <h1>
+      Practice Mindfulness
+     </h1>
+     <a class="button login" href="#" onclick="showScreen(2)">
+      Log in
+     </a>
+     <p>
+      welcome to the app
+     </p>
+     <a class="button signup" href="#" onclick="showScreen(2)">
+      Sign up
+     </a>
+    </div>
+    <div class="nav-buttons">
+     <div class="nav-button" onclick="showScreen(2)">
+      &gt;
+     </div>
+    </div>
+   </div>
+   <!-- Screen 2 -->
+   <div class="screen" id="screen2" style="display:none;">
+    <div class="header">
+     <div class="time">
+      10:30
+     </div>
+     <div class="icons">
+      <i class="fas fa-signal">
+      </i>
+      <i class="fas fa-wifi">
+      </i>
+      <i class="fas fa-battery-full">
+      </i>
+     </div>
+    </div>
+    <div class="content">
+     <h1>
+      What would you like to do today?
+     </h1>
+     <div class="mindfulness-options">
+      <div class="option calm" onclick="showScreen(3)">
+       CALM
+      </div>
+      <div class="option peace" onclick="showScreen(3)">
+       PEACE
+      </div>
+      <div class="option breathe" onclick="showScreen(3)">
+       BREATHE
+      </div>
+     </div>
+     <p>
+      welcome to the app
+     </p>
+     <a class="button login" href="#" onclick="showScreen(3)">
+      Get started
+     </a>
+    </div>
+    <div class="nav-buttons">
+     <div class="nav-button" onclick="showScreen(1)">
+      &lt;
+     </div>
+     <div class="nav-button" onclick="showScreen(3)">
+      &gt;
+     </div>
+    </div>
+   </div>
+   <!-- Screen 3 -->
+   <div class="screen" id="screen3" style="display:none;">
+    <div class="header">
+     <div class="time">
+      10:30
+     </div>
+     <div class="icons">
+      <i class="fas fa-signal">
+      </i>
+      <i class="fas fa-wifi">
+      </i>
+      <i class="fas fa-battery-full">
+      </i>
+     </div>
+    </div>
+    <div class="content">
+     <div class="video-section">
+      <div class="video" onclick="alert('Playing video...')">
+       <i class="fas fa-play">
+       </i>
+      </div>
+      <div class="session-info">
+       <h2>
+        SESSION 21
+       </h2>
+       <p>
+        welcome to the app
+       </p>
+      </div>
+      <div class="session-progress">
+       <div class="circle">
+        <img alt="Session 19" height="50" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-LmQ09WWGIGwOeeA4ArnRw0x5/user-uJPET5fjNenSso8wCETWVNOp/img-EdTmHgoD9DrS5Zl0RyVdrvTe.png?st=2024-09-17T12%3A16%3A16Z&amp;se=2024-09-17T14%3A16%3A16Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-16T23%3A34%3A55Z&amp;ske=2024-09-17T23%3A34%3A55Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=k/%2B9SeDnLM7lTaYQHU4rsE/JmT%2B3Rj6l5o6Va0ygQ4E%3D" width="50"/>
+        <span>
+         19
+        </span>
+       </div>
+       <div class="circle">
+        <img alt="Session 20" height="50" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-LmQ09WWGIGwOeeA4ArnRw0x5/user-uJPET5fjNenSso8wCETWVNOp/img-1hpkf9h32WJaK2rrMfphRvX1.png?st=2024-09-17T12%3A16%3A18Z&amp;se=2024-09-17T14%3A16%3A18Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-16T23%3A07%3A59Z&amp;ske=2024-09-17T23%3A07%3A59Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=EPItv7jMgC%2BFgBw%2B%2BRfeIybzIGppTqvWIXB7vfpI0y4%3D" width="50"/>
+        <span>
+         20
+        </span>
+       </div>
+       <div class="circle">
+        <img alt="Session 21" height="50" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-LmQ09WWGIGwOeeA4ArnRw0x5/user-uJPET5fjNenSso8wCETWVNOp/img-BeBIvfzXgXIY0YIagFl3Lrbb.png?st=2024-09-17T12%3A16%3A18Z&amp;se=2024-09-17T14%3A16%3A18Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-16T23%3A14%3A01Z&amp;ske=2024-09-17T23%3A14%3A01Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=udGNWQI94uIS%2BQos4ajLqCUi1qsgprn9JRkO6v09gP0%3D" width="50"/>
+        <span>
+         21
+        </span>
+       </div>
+       <div class="circle">
+        <img alt="Session 22" height="50" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-LmQ09WWGIGwOeeA4ArnRw0x5/user-uJPET5fjNenSso8wCETWVNOp/img-SrDaplqoNWRYeqXrQvHEhmXR.png?st=2024-09-17T12%3A16%3A21Z&amp;se=2024-09-17T14%3A16%3A21Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-16T23%3A08%3A18Z&amp;ske=2024-09-17T23%3A08%3A18Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=EIjhK9f3c6rYfc6aNQXbscONvN%2B//EGBaI2j%2By5reOc%3D" width="50"/>
+        <span>
+         22
+        </span>
+       </div>
+       <div class="circle">
+        <img alt="Session 23" height="50" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-LmQ09WWGIGwOeeA4ArnRw0x5/user-uJPET5fjNenSso8wCETWVNOp/img-hft83AwTyjozvqzTN4gedjik.png?st=2024-09-17T12%3A16%3A16Z&amp;se=2024-09-17T14%3A16%3A16Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-17T00%3A59%3A50Z&amp;ske=2024-09-18T00%3A59%3A50Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=lM7ytnOhhlnatkjemzZbYn4u4EImg1RYIRK7qtoVm2Q%3D" width="50"/>
+        <span>
+         23
+        </span>
+       </div>
+       <div class="arrow">
+        <i class="fas fa-arrow-right">
+        </i>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="nav-buttons">
+     <div class="nav-button" onclick="showScreen(2)">
+      &lt;
+     </div>
+     <div class="nav-button" onclick="showScreen(4)">
+      &gt;
+     </div>
+    </div>
+   </div>
+   <!-- Screen 4 -->
+   <div class="screen" id="screen4" style="display:none;">
+    <div class="header">
+     <div class="time">
+      10:30
+     </div>
+     <div class="icons">
+      <i class="fas fa-signal">
+      </i>
+      <i class="fas fa-wifi">
+      </i>
+      <i class="fas fa-battery-full">
+      </i>
+     </div>
+    </div>
+    <div class="content">
+     <h1>
+      Meditation Timer
+     </h1>
+     <div class="timer">
+      <h2>
+       00:00
+      </h2>
+      <button class="button login" onclick="alert('Timer started')">
+       Start
+      </button>
+      <button class="button signup" onclick="alert('Timer stopped')">
+       Stop
+      </button>
+     </div>
+    </div>
+    <div class="nav-buttons">
+     <div class="nav-button" onclick="showScreen(3)">
+      &lt;
+     </div>
+     <div class="nav-button" onclick="showScreen(5)">
+      &gt;
+     </div>
+    </div>
+   </div>
+   <!-- Screen 5 -->
+   <div class="screen" id="screen5" style="display:none;">
+    <div class="header">
+     <div class="time">
+      10:30
+     </div>
+     <div class="icons">
+      <i class="fas fa-signal">
+      </i>
+      <i class="fas fa-wifi">
+      </i>
+      <i class="fas fa-battery-full">
+      </i>
+     </div>
+    </div>
+    <div class="content">
+     <h1>
+      Daily Quotes
+     </h1>
+     <div class="quote">
+      <p>
+       "The mind is everything. What you think you become."
+      </p>
+      <button class="button login" onclick="alert('Next quote')">
+       Next
+      </button>
+     </div>
+    </div>
+    <div class="nav-buttons">
+     <div class="nav-button" onclick="showScreen(4)">
+      &lt;
+     </div>
+     <div class="nav-button" onclick="showScreen(6)">
+      &gt;
+     </div>
+    </div>
+   </div>
+   <!-- Screen 6 -->
+   <div class="screen" id="screen6" style="display:none;">
+    <div class="header">
+     <div class="time">
+      10:30
+     </div>
+     <div class="icons">
+      <i class="fas fa-signal">
+      </i>
+      <i class="fas fa-wifi">
+      </i>
+      <i class="fas fa-battery-full">
+      </i>
+     </div>
+    </div>
+    <div class="content">
+     <h1>
+      Breathing Exercises
+     </h1>
+     <div class="exercise">
+      <p>
+       Inhale for 4 seconds, hold for 7 seconds, exhale for 8 seconds.
+      </p>
+      <button class="button login" onclick="alert('Exercise started')">
+       Start
+      </button>
+     </div>
+    </div>
+    <div class="nav-buttons">
+     <div class="nav-button" onclick="showScreen(5)">
+      &lt;
+     </div>
+     <div class="nav-button" onclick="showScreen(7)">
+      &gt;
+     </div>
+    </div>
+   </div>
+   <!-- Screen 7 -->
+   <div class="screen" id="screen7" style="display:none;">
+    <div class="header">
+     <div class="time">
+      10:30
+     </div>
+     <div class="icons">
+      <i class="fas fa-signal">
+      </i>
+      <i class="fas fa-wifi">
+      </i>
+      <i class="fas fa-battery-full">
+      </i>
+     </div>
+    </div>
+    <div class="content">
+     <h1>
+      Progress Tracker
+     </h1>
+     <div class="progress">
+      <p>
+       Sessions completed: 10
+      </p>
+      <p>
+       Total time: 5 hours
+      </p>
+     </div>
+    </div>
+    <div class="nav-buttons">
+     <div class="nav-button" onclick="showScreen(6)">
+      &lt;
+     </div>
+     <div class="nav-button" onclick="showScreen(8)">
+      &gt;
+     </div>
+    </div>
+   </div>
+   <!-- Screen 8 -->
+   <div class="screen" id="screen8" style="display:none;">
+    <div class="header">
+     <div class="time">
+      10:30
+     </div>
+     <div class="icons">
+      <i class="fas fa-signal">
+      </i>
+      <i class="fas fa-wifi">
+      </i>
+      <i class="fas fa-battery-full">
+      </i>
+     </div>
+    </div>
+    <div class="content">
+     <h1>
+      Settings
+     </h1>
+     <div class="settings">
+      <button class="button login" onclick="alert('Change language')">
+       Change Language
+      </button>
+      <button class="button signup" onclick="alert('Change theme')">
+       Change Theme
+      </button>
+     </div>
+    </div>
+    <div class="nav-buttons">
+     <div class="nav-button" onclick="showScreen(7)">
+      &lt;
+     </div>
+     <div class="nav-button" onclick="showScreen(1)">
+      &gt;
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+   function showScreen(screenNumber) {
+            document.getElementById('screen1').style.display = 'none';
+            document.getElementById('screen2').style.display = 'none';
+            document.getElementById('screen3').style.display = 'none';
+            document.getElementById('screen4').style.display = 'none';
+            document.getElementById('screen5').style.display = 'none';
+            document.getElementById('screen6').style.display = 'none';
+            document.getElementById('screen7').style.display = 'none';
+            document.getElementById('screen8').style.display = 'none';
+            document.getElementById('screen' + screenNumber).style.display = 'block';
+        }
+  </script>
+ </body>
+</html>
